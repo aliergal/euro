@@ -11,17 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
-//Customers
-// Route::get('/customers', 'CustomerController@index')->name('customers');
-// Route::get('/customers/{id}', 'CustomerController@show');
-// Route::get('/customers/create', 'CustomerController@create');
-
-Route::resource('customers', 'CustomerController');
+Route::resources([
+    'customers' => 'CustomerController',
+    'products' => 'ProductController'
+]);
